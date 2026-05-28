@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LTD - Estação Laboratório</title>
+
+  <style>
+    :root {
+      --azul: #1f7fb4;
+      --azul-escuro: #0f5f8f;
+      --azul-claro: #38bdf8;
+      --texto: #0f172a;
+      --cinza: #64748b;
+      --branco: #ffffff;
+      --borda: #e2e8f0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.35), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(31, 127, 180, 0.18), transparent 28%),
+        linear-gradient(135deg, #eff6ff, #f8fafc);
+      color: var(--texto);
+    }
+
+    nav {
+      width: 100%;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--azul-escuro);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 35px 18px 25px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(219, 234, 254, 0.9);
+      color: #1d4ed8;
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: clamp(28px, 5vw, 46px);
+      line-height: 1.15;
+      letter-spacing: -1px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 16px auto 0;
+      font-size: 17px;
+      color: var(--cinza);
+      line-height: 1.6;
+    }
+
+    .status-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 20px auto 0;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .status-card {
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid var(--borda);
+      border-radius: 18px;
+      padding: 18px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    }
+
+    .status-card strong {
+      display: block;
+      font-size: 22px;
+      color: var(--azul-escuro);
+      margin-bottom: 4px;
+    }
+
+    .status-card span {
+      color: var(--cinza);
+      font-size: 14px;
+    }
+
+    main {
+      padding: 38px 16px 55px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .graficos-container {
+      width: 100%;
+      max-width: 1180px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .grafico-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 26px;
+      padding: 22px;
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.12);
+      transition: 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .grafico-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 7px;
+      background: linear-gradient(90deg, var(--azul), var(--azul-claro));
+    }
+
+    .grafico-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 45px rgba(15, 23, 42, 0.18);
+    }
+
+    .card-topo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      padding-top: 6px;
+    }
+
+    .icone {
+      min-width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--azul), var(--azul-claro));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 25px;
+      box-shadow: 0 8px 18px rgba(31, 127, 180, 0.3);
+    }
+
+    .card-topo h2 {
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .card-topo p {
+      font-size: 14px;
+      color: var(--cinza);
+    }
+
+    .iframe-box {
+      width: 100%;
+      background: white;
+      border-radius: 18px;
+      padding: 10px;
+      border: 1px solid #dbe3ec;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 12px;
+      display: block;
+      background: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 0 16px 38px;
+    }
+
+    footer a {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--azul), var(--azul-escuro));
+      color: white;
+      padding: 14px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      box-shadow: 0 10px 22px rgba(31, 127, 180, 0.35);
+      transition: 0.3s;
+    }
+
+    footer a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 14px 28px rgba(31, 127, 180, 0.45);
+    }
+
+    @media (max-width: 850px) {
+      nav {
+        padding: 16px;
+      }
+
+      .status-container,
+      .graficos-container {
+        grid-template-columns: 1fr;
+      }
+
+      .status-container {
+        max-width: 420px;
+      }
+
+      .grafico-card {
+        padding: 16px;
+        border-radius: 22px;
+      }
+
+      iframe {
+        height: 275px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .hero {
+        padding-top: 20px;
+      }
+
+      .card-topo {
+        align-items: flex-start;
+      }
+
+      iframe {
+        height: 260px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="hero">
+    <span class="badge">Monitoramento em tempo real</span>
+    <h1>LTD - Projeto de Estação Laboratório Transformação Digital</h1>
+    <p>
+      Acompanhe os dados coletados pelos sensores de solo e temperatura,
+      integrados à plataforma ThingSpeak.
+    </p>
+  </header>
+
+  <main>
+    <section class="graficos-container">
+      <article class="grafico-card">
+        <div class="card-topo">
+          <div class="icone">🌱</div>
+          <div>
+            <h2>Umidade do Solo</h2>
+            <p>Monitoramento dos dados enviados pelo sensor de solo.</p>
+          </div>
+        </div>
+
+        <div class="iframe-box">
+          <iframe
+            src="https://thingspeak.com/channels/3391105/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=solo&type=line">
+          </iframe>
+        </div>
+      </article>
+
+      <article class="grafico-card">
+        <div class="card-topo">
+          <div class="icone">🌡️</div>
+          <div>
+            <h2>Temperatura</h2>
+            <p>Visualização dos dados coletados pelo sensor de temperatura.</p>
+          </div>
+        </div>
+
+        <div class="iframe-box">
+          <iframe
+            src="https://thingspeak.com/channels/3391105/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=temperatura&type=line">
+          </iframe>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <a href="desenvolvedores.html">Conhecer desenvolvedores</a>
+  </footer>
+</body>
+</html>
